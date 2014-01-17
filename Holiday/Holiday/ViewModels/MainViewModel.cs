@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace Holiday
 {
-    public class MainViewModel : INotifyPropertyChanged
+    public class MainViewModel
     {
         public HolidayDataModel _holidayDataModel { get; set; }
         public bool IsDataLoaded { get; set; }
@@ -20,17 +20,7 @@ namespace Holiday
         {
             IsDataLoaded = false;
             await _holidayDataModel.RefreshList();
-            this.IsDataLoaded = true;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(String propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (null != handler)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
+            IsDataLoaded = true;
         }
     }
 }

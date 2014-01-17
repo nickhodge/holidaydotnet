@@ -93,6 +93,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataModel\HolidayInstance.cs" />
     <Compile Include="HolidayControl.xaml.cs">
       <DependentUpon>HolidayControl.xaml</DependentUpon>
     </Compile>

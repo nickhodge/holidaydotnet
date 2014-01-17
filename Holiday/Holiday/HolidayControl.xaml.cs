@@ -14,10 +14,12 @@ namespace Holiday
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            string selectedHash;
-            if (!NavigationContext.QueryString.TryGetValue("selectedItem", out selectedHash)) return;
-            if (selectedHash == null) return;
-            wBrowser.Navigate(new Uri("http://" + selectedHash));
+            string selectedHolidayIP;
+            if (!NavigationContext.QueryString.TryGetValue("selectedItem", out selectedHolidayIP)) return;
+            if (selectedHolidayIP == null) return;
+            // take the IP address of the selected item, and navigate to there
+
+            wBrowser.Navigate(new Uri("http://" + selectedHolidayIP));
         }
     }
 }
