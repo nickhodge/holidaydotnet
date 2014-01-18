@@ -7,7 +7,7 @@
 
 using Newtonsoft.Json;
 
-namespace HolidayAPI.Types
+namespace HolidayAPI
 {
     public class holidayLightsColor
     {

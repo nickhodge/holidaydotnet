@@ -2,7 +2,6 @@
 using System.Threading;
 using System.Threading.Tasks;
 using HolidayAPI;
-using HolidayAPI.Types;
 
 namespace Holiday.ConsoleTest
 {
@@ -18,37 +17,37 @@ namespace Holiday.ConsoleTest
 
             // var result = holiday.SetLamp(255, 255, 255).Result; // sets white
 
-            // var result = holiday.SoftOn(5).Result;
-            // var result = holiday.SoftOff(5).Result;
+            var result = holiday.SoftOn(5).Result;
+            
 
             var lights = new holidayLightsColor();
 
-            /* for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
-                
-
                 lights.SetOdd("0000FF");
                 lights.SetEven("FF0000");
-                var result = holiday.FastLights(lights).Result;
+                result = holiday.FastLights(lights).Result;
 
-                Thread.Sleep(TimeSpan.FromSeconds(1));
+                Thread.Sleep(TimeSpan.FromSeconds(0.5));
 
                 lights.SetOdd("FF0000");
                 lights.SetEven("0000FF");
                 result = holiday.FastLights(lights).Result;
-                Thread.Sleep(TimeSpan.FromSeconds(2));
+                Thread.Sleep(TimeSpan.FromSeconds(1));
+            } 
 
-            } */
-
+            /*
             for (int i = 1; i < 50; i++)
             {
                 lights.SetAllLights();
-                lights.SetModulo("FF0000",i);
+                lights.SetLight(i,"FF0000");
                 var result = holiday.FastLights(lights).Result;
-                Thread.Sleep(TimeSpan.FromSeconds(0.5));
-                
+                Thread.Sleep(TimeSpan.FromSeconds(0.5));  
             }
+             * 
+             * */
 
+            result = holiday.SoftOff(5).Result;
 
             PrintMessage("All finished. Press Return to continue.");
             Console.ReadLine();

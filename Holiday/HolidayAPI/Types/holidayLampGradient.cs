@@ -4,7 +4,7 @@
 
 // C# version taken from : https://github.com/moorescloud/holideck/blob/master/iotas/www/js/holiday.js
 
-namespace HolidayAPI.Types
+namespace HolidayAPI
 {
     public class holidayLampGradient
     {

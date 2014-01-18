@@ -5,15 +5,12 @@
 // C# version taken from : https://github.com/moorescloud/holideck/blob/master/iotas/www/js/holiday.js
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Reactive.Linq;
 using System.Reactive.Threading.Tasks;
 using System.Text;
 using System.Threading.Tasks;
-using HolidayAPI.Types;
 using Newtonsoft.Json;
 
 namespace HolidayAPI
