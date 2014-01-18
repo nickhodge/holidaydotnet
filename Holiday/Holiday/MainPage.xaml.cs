@@ -1,4 +1,8 @@
-﻿using System;
+﻿// (c) 2014 Nick Hodge 
+// Written for MooresCloud Pty Ltd
+// License: MIT License ref: https://github.com/moorescloud/holideck/blob/master/License.txt
+
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;

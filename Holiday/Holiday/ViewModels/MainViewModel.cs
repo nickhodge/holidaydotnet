@@ -1,6 +1,6 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿// (c) 2014 Nick Hodge 
+// Written for MooresCloud Pty Ltd
+// License: MIT License ref: https://github.com/moorescloud/holideck/blob/master/License.txt
 
 namespace Holiday
 {
