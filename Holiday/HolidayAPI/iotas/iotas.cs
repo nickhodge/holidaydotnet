@@ -15,11 +15,11 @@ namespace HolidayAPI
 {
     public class iotas
     {
-        public async Task<iotasDevice> GetSatus(string _ipaddress)
+        public async Task<iotasDevice> GetSatus(string _ipaddress, int timeoutSeconds = 10)
         {
             var iotasUrl = new Uri(String.Format("http://{0}/iotas", _ipaddress));
             var client = new HttpClient();
-            var download = await client.GetStringAsync(iotasUrl).ToObservable().Timeout(TimeSpan.FromSeconds(30));
+            var download = await client.GetStringAsync(iotasUrl).ToObservable().Timeout(TimeSpan.FromSeconds(timeoutSeconds));
             return JsonConvert.DeserializeObject<iotasDevice>(download);
         }
     }

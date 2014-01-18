@@ -32,13 +32,13 @@ namespace HolidayAPI
         [JsonIgnore]
         public string URLBase
         {
-            get { return String.Format("http://{0}/", this.IPAddress); }
+            get { return String.Format("http://{0}", this.IPAddress); }
         }
 
         [JsonIgnore]
         public string DeviceURL
         {
-            get { return String.Format("{0}iotas/0.1/device/{1}/{2}/", URLBase, Localdevice, Localname); }
+            get { return String.Format("{0}/iotas/0.1/device/{1}/{2}", URLBase, Localdevice, Localname); }
         }
      }
 

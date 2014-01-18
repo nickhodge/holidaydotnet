@@ -18,14 +18,27 @@ namespace HolidayAPI
     public class HolidayLights
     {
         private iotasDevice iotasDevice { get; set; }
-        private const string holidaySetLampColorEndpoint = "device/light/value";
-        private const string holidayGradientEndpoint = "device/light/gradient";
-        private const string holidaySetLightsEndpoint = "device/light/setlights";
+        private const string holidaySetLampColorEndpoint = "/device/light/value";
+        private const string holidayGradientEndpoint = "/device/light/gradient";
+        private const string holidaySetLightsEndpoint = "/device/light/setlights";
+        private const int timeoutSeconds = 10;
         private const int numOfLights = 50;
 
         public HolidayLights(iotasDevice _iotasDevice)
         {
             iotasDevice = _iotasDevice;
+        }
+
+        public HolidayLights()
+        {
+            iotasDevice = new iotasDevice();
+        }
+
+        public async Task<bool> Connect(string ipaddress)
+        {
+            var iotasControl = new iotas();
+            iotasDevice = await iotasControl.GetSatus(ipaddress, timeoutSeconds);
+            return iotasDevice.Localname != null;
         }
 
 
@@ -58,12 +71,14 @@ namespace HolidayAPI
             return await Put(holidaySetLightsEndpoint, JsonConvert.SerializeObject(colorSettings));           
         }
 
+
+        // utilities
         private async Task<bool> Post(string endPoint, string dataToPut)
         {
             var iotasUrl = new Uri(String.Format("{0}{1}", iotasDevice.URLBase, endPoint));
             var client = new HttpClient();
             var data = new StringContent(dataToPut, Encoding.UTF8, "application/x-www-form-urlencoded");
-            var resp = await client.PostAsync(iotasUrl, data).ToObservable().Timeout(TimeSpan.FromSeconds(30));
+            var resp = await client.PostAsync(iotasUrl, data).ToObservable().Timeout(TimeSpan.FromSeconds(timeoutSeconds));
             return resp.StatusCode == HttpStatusCode.OK;
         }
 
@@ -72,7 +87,7 @@ namespace HolidayAPI
             var iotasUrl = new Uri(String.Format("{0}{1}", iotasDevice.URLBase, endPoint));
             var client = new HttpClient();          
             var data = new StringContent(dataToPut, Encoding.UTF8, "application/x-www-form-urlencoded");
-            var resp = await client.PutAsync(iotasUrl, data).ToObservable().Timeout(TimeSpan.FromSeconds(30));
+            var resp = await client.PutAsync(iotasUrl, data).ToObservable().Timeout(TimeSpan.FromSeconds(timeoutSeconds));
             return resp.StatusCode == HttpStatusCode.OK;
         }
     }
