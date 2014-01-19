@@ -4,13 +4,10 @@
 
 // C# version taken from : https://github.com/moorescloud/holideck/blob/master/iotas/devices/moorescloud/holiday/driver.py
 
-
 namespace HolidayAPI
 {
-    public class HolidayLampGradient
+    public class HolidayHostname
     {
-        public int[] begin { get; set; }
-        public int[] end { get; set; }
-        public int steps { get; set; }
+        public string hostname { get; set; }
     }
 }

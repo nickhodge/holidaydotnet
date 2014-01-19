@@ -2,8 +2,9 @@
 // Written for MooresCloud Pty Ltd
 // License: MIT License ref: https://github.com/moorescloud/holideck/blob/master/License.txt
 
-// C# version taken from : https://github.com/moorescloud/holideck/blob/master/iotas/www/js/holiday.js
+// C# version taken from : https://github.com/moorescloud/holideck/blob/master/iotas/devices/moorescloud/holiday/driver.py
 
+using System;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
@@ -11,9 +12,11 @@ namespace HolidayAPI
 {
     public class HolidayLights : iotas
     {
-        private const string holidaySetLampColorEndpoint = "/device/light/value";
-        private const string holidayGradientEndpoint = "/device/light/gradient";
-        private const string holidaySetLightsEndpoint = "/device/light/setlights";
+        private const string holidaySetLampColorEndpoint = "/setvalues";
+        private const string holidayGradientEndpoint = "/gradient";
+        private const string holidaySetLightsEndpoint = "/setlights";
+        private const string holidayGetHostnameEndpoint = "/hostname";
+        private const string holidayGetLedValueEndpoint = "/led/{0}/value";
         private const int numOfLights = 50;
 
         public async Task<bool> Connect(string ipaddress)
@@ -37,8 +40,20 @@ namespace HolidayAPI
         // base 
         public async Task<bool> SetLamp(int r, int g, int b)
         {
-            var lampColor = new HolidayLampColor { value = new[] { r, g, b }.ClampValues() };
+            var lampColor = new HolidayLampColorRGB { value = new[] { r, g, b }.ClampValues() };
             return await Put(holidaySetLampColorEndpoint, JsonConvert.SerializeObject(lampColor));
+        }
+
+        public async Task<HolidayLedValue> GetLamp(int ledNumber = 1)
+        {
+            var led = await Get(String.Format(holidayGetLedValueEndpoint, ledNumber));
+            return JsonConvert.DeserializeObject<HolidayLedValue>(led);
+        }
+
+        public async Task<bool> SetLamp(int ledNumber, int r, int g, int b)
+        {
+            var ledDetails = new HolidayLampColorRGB {value = new[] {r, g, b}.ClampValues()};
+            return await Put(String.Format(holidayGetLedValueEndpoint, ledNumber), JsonConvert.SerializeObject(ledDetails));
         }
 
         public async Task<bool> Gradient(int startR, int startG, int startB, int endR, int endG, int endB, int gradientSteps)
@@ -49,9 +64,15 @@ namespace HolidayAPI
             return await Put(holidayGradientEndpoint, JsonConvert.SerializeObject(lampGradients));
         }
 
-        public async Task<bool> FastLights(HolidayLightsColor colorSettings)
+        public async Task<bool> SetLights(HolidayLightsColor colorSettings)
         {
             return await Put(holidaySetLightsEndpoint, JsonConvert.SerializeObject(colorSettings));           
         }
-     }
+
+        public async Task<string> GetHostname()
+        {
+            var result = await Get(holidayGetHostnameEndpoint);
+            return JsonConvert.DeserializeObject<HolidayHostname>(result).hostname;
+        }
+    }
 }

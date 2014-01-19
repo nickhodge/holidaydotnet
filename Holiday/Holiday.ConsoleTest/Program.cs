@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading;
-using System.Threading.Tasks;
 using HolidayAPI;
 
 namespace Holiday.ConsoleTest
@@ -15,37 +14,39 @@ namespace Holiday.ConsoleTest
             try
             {
                 if (!holiday.Connect("192.168.0.119").Result) return;
-                // var result = holiday.SetLamp(255, 255, 255).Result; // sets white
 
+
+                // get the hostname of the holiday
+                PrintMessage(holiday.GetHostname().Result);
+
+                
+
+                // run the "soft on" (which words on gradient)                
                 var result = holiday.SoftOn(5).Result;
 
 
+                // run the "soft on" (which words on gradient)                
                 var lights = new HolidayLightsColor();
-
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 1; i++)
                 {
-                    lights.SetOdd("0000FF");
-                    lights.SetEven("FF0000");
-                    result = holiday.FastLights(lights).Result;
+                    lights.SetOdd("#0000FF");
+                    lights.SetEven("#FF0000");
+                    result = holiday.SetLights(lights).Result;
 
                     Thread.Sleep(TimeSpan.FromSeconds(0.5));
 
-                    lights.SetOdd("FF0000");
-                    lights.SetEven("0000FF");
-                    result = holiday.FastLights(lights).Result;
+                    lights.SetOdd("#FF0000");
+                    lights.SetEven("#0000FF");
+                    result = holiday.SetLights(lights).Result;
                     Thread.Sleep(TimeSpan.FromSeconds(1));
                 }
-
-                /*
-            for (int i = 1; i < 50; i++)
-            {
-                lights.SetAllLights();
-                lights.SetLight(i,"FF0000");
-                var result = holiday.FastLights(lights).Result;
-                Thread.Sleep(TimeSpan.FromSeconds(0.5));  
-            }
-             * 
-             * */
+                
+         
+                // set an individual lamp
+                for (int i = 0; i < 49; i++)
+                {
+                    var y = holiday.SetLamp(i, 255, 0, 0).Result;                    
+                }
 
                 result = holiday.SoftOff(5).Result;
 

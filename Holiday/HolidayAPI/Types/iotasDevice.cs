@@ -11,6 +11,8 @@ namespace HolidayAPI
 {
     public class IotasDevice
     {
+        private const string iotasDeviceEndpoint = "/iotas/0.1/device/";
+
         [JsonProperty("apis")]
         public object[] apis { get; set; }
 
@@ -38,7 +40,7 @@ namespace HolidayAPI
         [JsonIgnore]
         public string DeviceURL
         {
-            get { return String.Format("{0}/iotas/0.1/device/{1}/{2}", URLBase, Localdevice, Localname); }
+            get { return String.Format("{0}{1}{2}/{3}", URLBase, iotasDeviceEndpoint, Localdevice, Localname); }
         }
      }
 

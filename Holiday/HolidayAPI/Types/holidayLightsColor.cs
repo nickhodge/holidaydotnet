@@ -2,7 +2,7 @@
 // Written for MooresCloud Pty Ltd
 // License: MIT License ref: https://github.com/moorescloud/holideck/blob/master/License.txt
 
-// C# version taken from : https://github.com/moorescloud/holideck/blob/master/iotas/www/js/holiday.js
+// C# version taken from : https://github.com/moorescloud/holideck/blob/master/iotas/devices/moorescloud/holiday/driver.py
 
 
 using Newtonsoft.Json;
@@ -22,7 +22,7 @@ namespace HolidayAPI
             SetAllLights();
          }
 
-        public void SetAllLights(string rgb = "000000")
+        public void SetAllLights(string rgb = "#000000")
         {
             for (var i = 0; i < numOfLights; i++)
             {

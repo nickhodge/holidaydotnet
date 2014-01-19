@@ -7,10 +7,10 @@
 
 namespace HolidayAPI
 {
-    public class HolidayLampGradient
+
+    public class HolidayLedValue : HolidayLampColorRGB
     {
-        public int[] begin { get; set; }
-        public int[] end { get; set; }
-        public int steps { get; set; }
+        public int led { get; set; }
     }
+
 }
