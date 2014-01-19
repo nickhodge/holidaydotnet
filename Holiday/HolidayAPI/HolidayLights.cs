@@ -17,14 +17,13 @@ namespace HolidayAPI
         private const string holidaySetLightsEndpoint = "/setlights";
         private const string holidayGetHostnameEndpoint = "/hostname";
         private const string holidayGetLedValueEndpoint = "/led/{0}/value";
-        private const int numOfLights = 50;
-
+         private const int numOfLights = 50;
+ 
         public async Task<bool> Connect(string ipaddress)
         {
             iotasDevice = await GetSatus(ipaddress);
             return iotasDevice.Localname != null;
         }
-
 
         // higher level
         public async Task<bool> SoftOn(int seconds = 1)
