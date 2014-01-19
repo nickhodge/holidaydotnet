@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>MooresCloudHolidayDotNet</id>
+        <version>1.0.0</version>
+        <title>MooresCloud Holiday DotNet</title>
+        <authors>Nick Hodge</authors>
+        <owners>Nick Hodge</owners>
+        <projectUrl>https://github.com/nickhodge/holidaydotnet</projectUrl>
+        <iconUrl>https://github.com/nickhodge/holidaydotnet/blob/master/Holiday/Holiday/Assets/AppIcon100x100.png?raw=true</iconUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>My package description.</description>
+        <summary>PCL (Portable Class Library) client for the MooresCloud Holiday
+
+http://moorescloud.com/index.html#holiday</summary>
+        <releaseNotes>1.0.0 Initial version (PCL)</releaseNotes>
+        <copyright>(c) 2014 Nick Hodge</copyright>
+        <language>en-AU</language>
+        <tags>holiday,moorescloud,rest,client</tags>
+        <dependencies>
+            <dependency id="Newtonsoft.Json" />
+            <dependency id="Rx-Main" />
+            <dependency id="Reactive.EventAggregator" version="1.1.0" />
+            <dependency id="Microsoft.Net.Http" version="2.2.13" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\Release\HolidayAPI.dll" target="lib\portable-net45+wp8+win8\HolidayAPI.dll" />
+    </files>
+</package>
