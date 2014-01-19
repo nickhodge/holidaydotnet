@@ -15,14 +15,14 @@ namespace Holiday.SecretAPI
             {
                 udpClient.Connect("192.168.0.119", 9988);
 
-                for (int i = 0; i < 59; i++)
+                for (int i = 0; i < 590; i++)
                 {
                     // Sends a message to the host to which you have connected.
                     Byte[] sendBytes = GetRandomBytes(160);
 
                     var x = udpClient.SendAsync(sendBytes, sendBytes.Length).Result;
 
-                    Thread.Sleep(TimeSpan.FromSeconds(0.5));
+                    Thread.Sleep(TimeSpan.FromSeconds(1));
                 }
 
                 udpClient.Close();

@@ -12,6 +12,9 @@ using System.Reactive.Threading.Tasks;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+#if(WINDOWS_PHONE)
+using System.Net.Sockets;
+#endif
 
 namespace HolidayAPI
 {
@@ -20,7 +23,10 @@ namespace HolidayAPI
         private const int timeoutSeconds = 10;
         protected IotasDevice iotasDevice { get; set; }
         private const string iotasStatusEndpoint = "/iotas";
-
+#if(WINDOWS_PHONE)
+        protected Socket UdpsSocket;
+        protected SocketAsyncEventArgs socketEventArg;
+#endif
         public async Task<IotasDevice> GetSatus(string _ipaddress)
         {
             var response = await Get(String.Format("http://{0}{1}", _ipaddress, iotasStatusEndpoint));
@@ -29,6 +35,20 @@ namespace HolidayAPI
 
 
         // utilities
+#if(WINDOWS_PHONE)
+        protected void ConnectStream(int udpPort = 9988)
+        {
+            UdpsSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            socketEventArg = new SocketAsyncEventArgs {RemoteEndPoint = new DnsEndPoint(iotasDevice.IPAddress, udpPort)};
+        }
+
+        protected async Task<bool> SendStream(byte[] lightBytes)
+        {
+            var payload = lightBytes;
+            socketEventArg.SetBuffer(payload, 0, payload.Length);
+            return UdpsSocket.SendToAsync(socketEventArg);
+        }
+#endif
         protected async Task<string> Get(string endPoint)
         {
             var iotasUrl = iotasDevice != null ? new Uri(String.Format("{0}{1}", iotasDevice.DeviceURL, endPoint)) : new Uri(endPoint);

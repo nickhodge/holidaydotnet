@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A1DC25
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolidayAPI.WP8", "HolidayAPI.WP8\HolidayAPI.WP8.csproj", "{46192AFD-1A0F-4544-9506-16B524090A92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +62,18 @@ Global
 		{5E76492E-FA61-4404-AC03-A42FCAA5A7C0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5E76492E-FA61-4404-AC03-A42FCAA5A7C0}.Release|ARM.ActiveCfg = Release|Any CPU
 		{5E76492E-FA61-4404-AC03-A42FCAA5A7C0}.Release|x86.ActiveCfg = Release|Any CPU
+		{46192AFD-1A0F-4544-9506-16B524090A92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46192AFD-1A0F-4544-9506-16B524090A92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46192AFD-1A0F-4544-9506-16B524090A92}.Debug|ARM.ActiveCfg = Debug|ARM
+		{46192AFD-1A0F-4544-9506-16B524090A92}.Debug|ARM.Build.0 = Debug|ARM
+		{46192AFD-1A0F-4544-9506-16B524090A92}.Debug|x86.ActiveCfg = Debug|x86
+		{46192AFD-1A0F-4544-9506-16B524090A92}.Debug|x86.Build.0 = Debug|x86
+		{46192AFD-1A0F-4544-9506-16B524090A92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46192AFD-1A0F-4544-9506-16B524090A92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46192AFD-1A0F-4544-9506-16B524090A92}.Release|ARM.ActiveCfg = Release|ARM
+		{46192AFD-1A0F-4544-9506-16B524090A92}.Release|ARM.Build.0 = Release|ARM
+		{46192AFD-1A0F-4544-9506-16B524090A92}.Release|x86.ActiveCfg = Release|x86
+		{46192AFD-1A0F-4544-9506-16B524090A92}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
