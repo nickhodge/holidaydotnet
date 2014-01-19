@@ -9,14 +9,14 @@ using Newtonsoft.Json;
 
 namespace HolidayAPI
 {
-    public class holidayLightsColor
+    public class HolidayLightsColor
     {
         [JsonIgnore]
         private const int numOfLights = 50;
 
         public string[] lights { get; set; }
 
-        public holidayLightsColor()
+        public HolidayLightsColor()
         {
             lights = new string[numOfLights];
             SetAllLights();

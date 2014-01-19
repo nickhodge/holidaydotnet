@@ -7,7 +7,7 @@
 
 namespace HolidayAPI
 {
-    public class holidayLampColor
+    public class HolidayLampColor
     {
         public int[] value { get; set; }
     }

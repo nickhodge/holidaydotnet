@@ -35,13 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Helpers\IntArray.cs" />
     <Compile Include="HolidayLights.cs" />
     <Compile Include="iotas\iotas.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Types\holidayLightsColor.cs" />
-    <Compile Include="Types\holidayLampColor.cs" />
-    <Compile Include="Types\holidayLampGradient.cs" />
-    <Compile Include="Types\iotasDevice.cs" />
+    <Compile Include="Types\HolidayLightsColor.cs" />
+    <Compile Include="Types\HolidayLampColor.cs" />
+    <Compile Include="Types\HolidayLampGradient.cs" />
+    <Compile Include="Types\IotasDevice.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json">

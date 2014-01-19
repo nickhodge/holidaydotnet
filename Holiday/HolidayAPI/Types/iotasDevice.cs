@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace HolidayAPI
 {
-    public class iotasDevice
+    public class IotasDevice
     {
         [JsonProperty("apis")]
         public object[] apis { get; set; }

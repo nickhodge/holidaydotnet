@@ -6,7 +6,7 @@
 
 namespace HolidayAPI
 {
-    public class holidayLampGradient
+    public class HolidayLampGradient
     {
         public int[] begin { get; set; }
         public int[] end { get; set; }

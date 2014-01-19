@@ -20,7 +20,7 @@ namespace Holiday.ConsoleTest
                 var result = holiday.SoftOn(5).Result;
 
 
-                var lights = new holidayLightsColor();
+                var lights = new HolidayLightsColor();
 
                 for (int i = 0; i < 5; i++)
                 {
