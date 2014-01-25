@@ -85,6 +85,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\HolidayAPI\Helpers\ByteArray.cs">
+      <Link>Helpers\ByteArray.cs</Link>
+    </Compile>
     <Compile Include="..\HolidayAPI\Helpers\IntArray.cs">
       <Link>Helpers\IntArray.cs</Link>
     </Compile>

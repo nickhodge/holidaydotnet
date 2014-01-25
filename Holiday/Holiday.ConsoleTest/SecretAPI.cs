@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Sockets;
 using System.Threading;
+using HolidayAPI;
 
 namespace Holiday.SecretAPI
 {
@@ -13,13 +14,21 @@ namespace Holiday.SecretAPI
             var udpClient = new UdpClient(9988);
             try
             {
-                udpClient.Connect("192.168.0.119", 9988);
+                udpClient.Connect("192.168.0.22", 9988);
+                var sendBytes = new byte[160];
+                sendBytes.InitializeArrayValues();
 
-                for (int i = 0; i < 590; i++)
+                // note first 10 bytes are ignored; set these to zero just in case.
+
+                for (int i = 0; i < 10; i++)
                 {
-                    // Sends a message to the host to which you have connected.
-                    Byte[] sendBytes = GetRandomBytes(160);
-
+                    for (int j = 10; j < 160; j++)
+                    {
+                        var bytes = new byte[1];
+                        rand.NextBytes(bytes);
+                        sendBytes[j] = bytes[0];
+                    }
+                    
                     var x = udpClient.SendAsync(sendBytes, sendBytes.Length).Result;
 
                     Thread.Sleep(TimeSpan.FromSeconds(1));
@@ -37,14 +46,7 @@ namespace Holiday.SecretAPI
 
         }
 
-        static Random rand = new Random();
-        static byte[] GetRandomBytes(int count)
-        {
-            var bytes = new byte[count];
-            rand.NextBytes(bytes);
-            return bytes;
-        }
-
+        public static Random rand = new Random();
 
         public static void PrintError(string errorText)
         {

@@ -35,6 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Helpers\ByteArray.cs" />
     <Compile Include="Helpers\IntArray.cs" />
     <Compile Include="HolidayLights.cs" />
     <Compile Include="iotas\iotas.cs" />
