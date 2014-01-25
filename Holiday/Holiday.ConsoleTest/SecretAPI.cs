@@ -20,7 +20,7 @@ namespace Holiday.SecretAPI
 
                 // note first 10 bytes are ignored; set these to zero just in case.
 
-                for (int i = 0; i < 10; i++)
+                for (int i = 0; i < 6000; i++)
                 {
                     for (int j = 10; j < 160; j++)
                     {
@@ -31,7 +31,7 @@ namespace Holiday.SecretAPI
                     
                     var x = udpClient.SendAsync(sendBytes, sendBytes.Length).Result;
 
-                    Thread.Sleep(TimeSpan.FromSeconds(1));
+                    Thread.Sleep(TimeSpan.FromSeconds(0.1));
                 }
 
                 udpClient.Close();
